@@ -3,9 +3,11 @@ package com.example.administrator.coolweather.Http;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.example.administrator.coolweather.GSON.Weather;
 import com.example.administrator.coolweather.db.City;
 import com.example.administrator.coolweather.db.County;
 import com.example.administrator.coolweather.db.Province;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,5 +77,17 @@ public class Response {
             }
         }
         return false;
+    }
+
+    public static Weather handleWeatherResponse (String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String content = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(content,Weather.class);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
