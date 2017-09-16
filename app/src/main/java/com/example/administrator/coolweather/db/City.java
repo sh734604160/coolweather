@@ -1,11 +1,13 @@
 package com.example.administrator.coolweather.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * 市级数据库对照类
  * Created by Administrator on 2017/9/16.
  */
 
-public class City {
+public class City extends DataSupport{
     private int id;
     private String cityName;
     private String cityCode;

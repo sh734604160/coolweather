@@ -1,15 +1,25 @@
 package com.example.administrator.coolweather.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * 县级数据库对照类
  * Created by Administrator on 2017/9/16.
  */
 
-public class County {
+public class County extends DataSupport {
     private int id;
     private String countyName;
-    private String countyCode;
+    private String weatherId;
     private int cityId;
+
+    public String getWeatherId() {
+        return weatherId;
+    }
+
+    public void setWeatherId(String weatherId) {
+        this.weatherId = weatherId;
+    }
 
     public int getId() {
         return id;
@@ -25,14 +35,6 @@ public class County {
 
     public void setCountyName(String countyName) {
         this.countyName = countyName;
-    }
-
-    public String getCountyCode() {
-        return countyCode;
-    }
-
-    public void setCountyCode(String countyCode) {
-        this.countyCode = countyCode;
     }
 
     public int getCityId() {
